@@ -1,0 +1,89 @@
+﻿<div ng-show="loading">Loading...</div>
+<div ng-form="athleteForm">
+    <table class="crud-grid table table-striped table-bordered table-condensed table-hover">
+        <tr>
+            <th class="col-md-1">
+                <div class="btn-toolbar"><i class="btn btn-default glyphicon glyphicon-plus" ng-click="toggleAddMode()"></i></div>
+            </th>
+            <th ng-click="setOrderBy('emailaddress')">
+                <div>
+                    Email Address<i class="glyphicon" ng-class="{'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc}" ng-show="orderBy.field == 'emailaddress'"></i>
+                </div>
+            </th>
+            <th ng-click="setOrderBy('firstname')">
+                <div>
+                    First Name<i class="glyphicon" ng-class="{'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc}" ng-show="orderBy.field == 'firstname'"></i>
+                </div>
+            </th>
+            <th ng-click="setOrderBy('lastname')">
+                <div>
+                    Last Name<i class="glyphicon" ng-class="{'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc}" ng-show="orderBy.field == 'lastname'"></i>
+                </div>
+            </th>
+            <th ng-click="setOrderBy('cellphone')">
+                <div>
+                    Cell Phone<i class="glyphicon" ng-class="{'glyphicon-sort-by-alphabet': orderBy.asc, 'glyphicon-sort-by-alphabet-alt': !orderBy.asc}" ng-show="orderBy.field == 'cellphone'"></i>
+                </div>
+            </th>
+        </tr>
+        <!-- header -->
+        <tr ng-show="addMode">
+            <td>
+                <div class="btn-toolbar" role="toolbar">
+                    <div class="btn-group">
+                        <i class="btn btn-default glyphicon glyphicon-save" ng-click="addObject()"></i>
+                        <i class="btn btn-default glyphicon glyphicon-remove" ng-click="toggleAddMode()"></i>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <input type="text" ng-model="object.emailaddress" />
+            </td>
+            <td>
+                <input type="text" ng-model="object.firstname" />
+            </td>
+            <td>
+                <input ng-model="object.lastname" />
+            </td>
+            <td>
+                <input ng-model="object.cellphone" />
+            </td>
+        </tr>
+        <!-- addMode() -->
+        <tr ng-repeat="object in objects | orderBy:orderBy.field:!orderBy.asc">
+            <td>
+                <div class="btn-toolbar" role="toolbar" ng-show="object.editMode == null || object.editMode == false">
+                    <div class="btn-group">
+                        <i class="btn btn-default glyphicon glyphicon-edit" ng-click="toggleEditMode(object)"></i>
+                        <i class="btn btn-default glyphicon glyphicon-trash" ng-click="deleteObject(object)"></i>
+                    </div>
+                </div>
+                <div class="btn-toolbar" ng-show="object.editMode == true">
+                    <div class="btn-group">
+                        <i class="btn btn-default glyphicon glyphicon-save" ng-click="updateObject(object)"></i>
+                        <i class="btn btn-default glyphicon glyphicon-remove" ng-click="toggleEditMode(object)"></i>
+                    </div>
+                </div>
+            </td> <!-- toolbar -->
+            <td class="hide">{{object.emailaddress}}</td>
+            <td>
+                <span ng-show="object.editMode == null || object.editMode == false">{{object.emailaddress}}</span>
+                <input type="email" ng-model="object.emailaddress" ng-show="object.editMode == true" model-change-blur />
+            </td>
+            <td>
+                <span ng-show="object.editMode == null || object.editMode == false">{{object.firstname}}</span>
+                <input class="input-sm" ng-model="object.firstname" ng-show="object.editMode == true" required model-change-blur />
+            </td>
+            <td>
+                <span ng-show="object.editMode == null || object.editMode == false">{{object.lastname}}</span>
+                <input ng-model="object.lastname" ng-show="object.editMode == true" model-change-blur/>
+            </td>
+            <td>
+                <span ng-show="object.editMode == null || object.editMode == false">{{object.cellphone}}</span>
+                <input type="tel" ng-model="object.cellphone" ng-show="object.editMode == true" model-change-blur/>
+            </td>
+        </tr>
+        <!-- normal -->
+    </table>
+</div>
+

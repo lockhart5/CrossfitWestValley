@@ -1,0 +1,51 @@
+﻿<div class="row">
+    <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+        <h2 class="text-center">Sign In</h2>
+        <div class="form-box">
+            <div class="form-group">
+                <input ng-model="emailaddress" type="text" class="form-control" placeholder="Email" required autofocus />
+            </div>
+            <div class="form-group">
+                <input ng-model="password" type="password" class="form-control" placeholder="Password" required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" ng-click="login()" ng-disabled="!(emailaddress && password)" disabled>Sign In</button>
+            </div>
+            <div class="form-group">
+                <input ng-model="rememberMe" type="checkbox" value="Remember" checked /> Remember Me
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" ng-click="createUser()" ng-disabled="!(emailaddress && password)" disabled>Create</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--<div class="container">
+    <p id="error"></p>
+    <div id="login" class="view active">
+        <ul>
+            <li>
+                <input ng-model="emailaddress" class="input-box" type="text" placeholder="Email" />
+            </li>
+            <li>
+                <input ng-model="password" class="input-box" type="password" placeholder="Password" />
+            </li>
+            <li>
+                <label for="chkRegister">
+                    <input id="chkRegister" type="checkbox" value="Register" checked /> Register
+                </label>
+            </li>
+            <li>
+                <button id="btAction" class="btn" ng-click="login()">Login</button>
+            </li>
+        </ul>
+    </div>
+
+    <div id="userInfo" class="view">
+        <h4>Users</h4>
+        <button id="btLogout" class="btn" ng-click="logOut()">Logout</button>
+        <ul id="userList"></ul>
+    </div>
+
+</div>-->
